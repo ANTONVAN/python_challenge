@@ -39,7 +39,7 @@ with open(profit_losses,"r") as csvfile:
     print(f"Total Months: {totalMonths}")
     print(f"Total: ${total_profit_losses}")
 
-    print(f"Average change: ${round((total_change - 867884) / (len(differenceList)-1),2)}")    
+    print(f"Average change: ${round((total_change - differenceList[0]) / (len(differenceList)-1),2)}")    
 
     print(f"Greatest increase in profits: {res[max(differenceList)]} (${max(differenceList)})")
     print(f"Greatest decrease in profits: {res[min(differenceList)]} (${min(differenceList)})")
