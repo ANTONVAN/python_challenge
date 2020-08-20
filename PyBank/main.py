@@ -15,26 +15,29 @@ with open(profit_losses,"r") as csvfile:
     profitLossesList = []
     prev_row = 0
     differenceList = []
+    monthsList = []
 
     for row in csvreader:
         months_count += 1
         profit_losses_count += int(row[1])
         profitLossesList.append(int(row[1]))
+        monthsList.append(row[0])
 
     for row in profitLossesList:
         difference = row - prev_row
         prev_row = row
         differenceList.append(difference)
 
+    res = {differenceList[i]: monthsList[i] for i in range(len(monthsList))} 
     
     totalMonths = months_count
     total_profit_losses = profit_losses_count
     print(f"Total Months: {totalMonths}")
     print(f"Total: ${total_profit_losses}")
-    #print(profitLossesList)
-    #print(differenceList)
-    print(max(differenceList))
-    print(min(differenceList))
+  
+    print(f"Greatest increase in profits: {res[max(differenceList)]} (${max(differenceList)})")
+    print(f"Greatest decrease in profits: {res[min(differenceList)]} (${min(differenceList)})")
+
 
 
 
