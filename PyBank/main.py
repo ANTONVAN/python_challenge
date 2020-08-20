@@ -16,6 +16,7 @@ with open(profit_losses,"r") as csvfile:
     prev_row = 0
     differenceList = []
     monthsList = []
+    total = 0
 
     for row in csvreader:
         months_count += 1
@@ -32,12 +33,17 @@ with open(profit_losses,"r") as csvfile:
     
     totalMonths = months_count
     total_profit_losses = profit_losses_count
+
+    total_change = sum(differenceList)
+
     print(f"Total Months: {totalMonths}")
     print(f"Total: ${total_profit_losses}")
-  
+
+    print(f"Average change: ${round((total_change - 867884) / (len(differenceList)-1),2)}")    
+
     print(f"Greatest increase in profits: {res[max(differenceList)]} (${max(differenceList)})")
     print(f"Greatest decrease in profits: {res[min(differenceList)]} (${min(differenceList)})")
-
+    
 
 
 
